@@ -64,6 +64,12 @@ expenseForm.addEventListener(
       category,
     }
 
+    // a change in data -> ui should re-render (with vanilla JS, we have to trigger that manually)
     expenses.push(newExpense);
     renderExpenses(expenses);
+
+    // after submitting, we want the form to reset
+    expenseForm.reset();
+    // you could also write this.reset() since the code scope for this listener is attached to expenseForm
+    // as the parent object — "this" just refers to whatever the parent object for a block of code is
 });
