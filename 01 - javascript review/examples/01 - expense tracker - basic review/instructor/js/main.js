@@ -3,7 +3,7 @@ import expenses from './expense-data.js';
 
 // 2. grab relevant DOM elements
 const expenseContainer = document.getElementById('expense-container');
-const searchTerm = document.getElementById('searchbox');
+const searchBox = document.getElementById('searchbox');
 const expenseForm = document.getElementById('expense-form-add');
 
 // 3. render out data into a grid of cards
@@ -74,3 +74,21 @@ expenseForm.addEventListener(
     }
 
 });
+
+
+/* 6. let's handle search filtration! we need:
+      - the searchbox DOM element as an object (already done in step 2)
+      - attach an event listener on it for change/input events
+      - somehow filter the cards (i.e. the expenses array) based on the text in the searchbox
+*/
+searchBox.addEventListener(
+  "input",            // arg 1: event type/name
+  function (event) {  // arg 2: callback function that fires when event is emitted
+    console.log(event);
+    const searchTerm = event.target.value;
+    const filteredExpenses = expenses.filter(
+      (expense) => expense.title.includes(searchTerm)
+    );
+    renderExpenses(filteredExpenses);
+  }
+);
