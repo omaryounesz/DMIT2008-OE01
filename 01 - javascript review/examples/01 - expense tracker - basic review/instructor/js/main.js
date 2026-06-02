@@ -103,7 +103,7 @@ expenseContainer.addEventListener(
     // "always the container itself"
     if (event.target.classList.contains("delete-btn")) {
       // 1. get the ID of the card / data element that got clicked
-      const expenseId = parseInt(event.target.id)
+      const expenseId = parseInt(event.target.id);
       // 2. now, I have to find where in the expenses array this object is.
       //     -> we can never safely assume that e.g. IDs don't have gaps, etc.;
       //        an ID isn't guaranteed to match the position of that object in the array
@@ -119,6 +119,23 @@ expenseContainer.addEventListener(
     } else if (event.target.classList.contains("edit-btn")) {
       // populate the form inputs w/ data from the element/card
       // somehow figure out a way to save back to that element/card instead of creating a new one
+      // 1+2. get ID of card & find its index
+      const expenseId = parseInt(event.target.id);
+      const expenseToEdit = expenses.find(     // find the actual object (we need what's in it, as opposed to simply deleting)
+        (expense) => expense.id === expenseId  // we still want a matching object based on ID
+      );
+      // 3. populate the form inputs with data from the expense item
+      if (expenseToEdit) {
+        document.getElementById("title").value = expenseToEdit.title;
+        document.getElementById("amount").value = expenseToEdit.amount;
+        document.getElementById("date").value = expenseToEdit.date;
+        document.getElementById("category").value = expenseToEdit.category;
+        document.getElementById("id").value = expenseToEdit.id;
+
+        // bonus QOL: change button text depending on what we're doing
+        document.getElementById("submitter").innerText = "Save";
+      }
+
     }
   }
 );
