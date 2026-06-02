@@ -109,7 +109,12 @@ expenseContainer.addEventListener(
       //        an ID isn't guaranteed to match the position of that object in the array
       const expenseIndex = expenses.findIndex(  // get me the index of the expense
         (expense) => expense.id === expenseId   // where the expense ID matches the ID on the button that got clicked
-      ) 
+      );
+      // 3. once we have the index, we can delete what's at that index in the array:
+      if (expenseIndex !== -1) {          // findIndex returns -1 if it can't find a matching index ^
+        expenses.splice(expenseIndex, 1); // "starting at {expenseIndex}, delete 1 thing" (i.e. just that expense)
+        renderExpenses(expenses);         // data changed; therefore we re-render
+      }
 
     } else if (event.target.classList.contains("edit-btn")) {
       // populate the form inputs w/ data from the element/card
