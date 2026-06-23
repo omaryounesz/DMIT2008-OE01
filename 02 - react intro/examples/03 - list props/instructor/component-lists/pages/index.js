@@ -1,6 +1,9 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 
+// my components
+import SimpsonsCharacters from '@/components/SimpsonsCharacters'
+
 export default function Home() {
   return (
     <>
@@ -14,6 +17,7 @@ export default function Home() {
         className={`${styles.page}`}
       >
         <main className={styles.main}>
+          <SimpsonsCharacters />
         </main>
       </div>
     </>
