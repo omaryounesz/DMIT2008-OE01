@@ -1,9 +1,11 @@
 import Head from "next/head";
 
-// MUI components
+// MUI layout components
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 
+// MUI element components
+import Typography from '@mui/material/Typography';
 
 export default function Home() {
   return (
@@ -17,7 +19,12 @@ export default function Home() {
       <main>
         <Container maxWidth="md" sx={{ background: '#cccccc' }}>
           <Box sx={{ my: 4 }}>
-            some content we'll add later
+            <Typography variant="h2" component="h2">
+              MUI looks good.
+            </Typography>
+            <Typography variant="p" component="p">
+              You can perhaps see why this is a popular package.
+            </Typography>   
           </Box>
         </Container>
       </main>
